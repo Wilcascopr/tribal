@@ -12,7 +12,7 @@ import (
 var mu sync.Mutex
 
 const (
-	limitPerRequest = 3_000
+	limitPerRequest = 5_000
 )
 
 func GenerateUsers(amount int) ([]User, error) {
@@ -127,6 +127,7 @@ func (ug *usersGenerator) formatAddUser(userApi UserApi) int {
 		mu.Unlock()
 		return 1
 	}
+	mu.Unlock()
 	return 0
 }
 
